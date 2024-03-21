@@ -302,10 +302,9 @@ ostream& operator<<(ostream &out,const Elev& e){
         out<<"Media: "<<round((float)m4/(float)e.note4);
         out<<endl;}
     out<<"Media generala: ";
-    float m;
+//    float m;
     if(ok1*ok2*ok3*ok4==1){
-        m=round((float)m1/(float)e.note1)+round((float)m2/(float)e.note2)+round((float)m3/(float)e.note3)+round((float)m4/(float)e.note4);
-        out<<m/4.0<<endl;}
+        out<<(round((float)m1/(float)e.note1)+round((float)m2/(float)e.note2)+round((float)m3/(float)e.note3)+round((float)m4/(float)e.note4))/4.0<<endl;}
     else{out<<0<<endl;}
     out<<"Absente: "<<e.nr_absente;
     return out;
@@ -407,18 +406,19 @@ public:
     ~Clasa(){
         delete[] elevi;
     }
-    Clasa(const Clasa& c) : diriginte() {
-        nume_clasa=c.nume_clasa;
-        diriginte=c.diriginte;
+//    diriginte()
+    Clasa(const Clasa& c)  {
+        this->nume_clasa=c.nume_clasa;
+        this->diriginte=c.diriginte;
         if(c.elevi!= nullptr&&c.nr_elevi>0){
-            nr_elevi=c.nr_elevi;
-            elevi=new Elev[nr_elevi];
-            for(int i=0;i<nr_elevi;i++)
-                elevi[i]=c.elevi[i];
+            this->nr_elevi=c.nr_elevi;
+            this->elevi=new Elev[this->nr_elevi];
+            for(int i=0;i<this->nr_elevi;i++)
+                this->elevi[i]=c.elevi[i];
         }
         else{
-            elevi= nullptr;
-            nr_elevi=0;
+            this->elevi= nullptr;
+            this->nr_elevi=0;
         }
     }
     Clasa& operator=(const Clasa &c){

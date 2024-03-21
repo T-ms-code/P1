@@ -341,9 +341,9 @@ public:
     }
     friend istream& operator>>(istream& in, Profesor& c);
     friend ostream& operator<<(ostream& out, const Profesor& c);
-    bool operator==(Profesor& p){
-        return (nume_profesor==p.nume_profesor&&materie_predata==p.materie_predata&&ani_vechime==p.ani_vechime);
-    }
+//    bool operator==(Profesor& p){
+//        return (nume_profesor==p.nume_profesor&&materie_predata==p.materie_predata&&ani_vechime==p.ani_vechime);
+//    }
 };
 istream& operator>>(istream& in, Profesor& c){
     cout<<"Numele profesorului: ";
@@ -441,15 +441,18 @@ public:
     }
     friend ostream& operator<<(ostream& out,const Clasa& c);
     friend istream& operator>>(istream& in, Clasa& c);
-    bool operator==(Clasa& c){
-        int ok=1;
-        if(!(nume_clasa==c.nume_clasa))
-            ok=0;
-        if(!(diriginte==c.diriginte))
-            ok=0;
-        ///Elevii  nu sunt luati in calcul, intrucat pot exista elevi cu acelasi nume si aceleasi rezultate
-        return ok;
+    Clasa operator++(){
+        nr_elevi++;
     }
+//    bool operator==(Clasa& c){
+//        int ok=1;
+//        if(!(nume_clasa==c.nume_clasa))
+//            ok=0;
+//        if(!(diriginte==c.diriginte))
+//            ok=0;
+//        ///Elevii  nu sunt luati in calcul, intrucat pot exista elevi cu acelasi nume si aceleasi rezultate
+//        return ok;
+//    }
     friend int operator+(const Clasa& c1,const Clasa& c2);
     void SchimbaDiriginte(){
         Profesor p;
@@ -473,7 +476,7 @@ public:
         for(int i=0;i<nr_elevi;i++)
             elevi[i]=v2[i];
         elevi[nr_elevi]=e;
-        nr_elevi=nr;
+//        nr_elevi=nr;
 //        for(int i=0;i<nr_elevi;i++)
 //            v2[i].dezaloca();
         delete[] v2;
@@ -558,7 +561,6 @@ int operator+(const Clasa& c1,const Clasa& c2){
 }
 
 
-
 int main() {
     Profesor P1("Daniel Fugulin", "Matematica", 30), P2("Nicu Cristinel", "Sport", 15), P3("Fugulin Sivia", "Romana",
                                                                                            20), P4("Visenescu Valeria",
@@ -632,7 +634,7 @@ int main() {
                             int egal=0;
                             for(int i=0;i<nr_clase;i++)
                                 for(int j=i+1;j<nr_clase;j++)
-                                    if(clase[i]==clase[j])
+                                    if(clase[i].getnume()==clase[j].getnume())
                                         egal=1;
                             for (int i = 0; i < nr_clase; i++) {
                                 cout << clase[i] << endl;
@@ -732,7 +734,7 @@ int main() {
                             int ok=0;
                             for(int i=0;i<nr_clase;i++)
                                 if(clase[i].getnume()==numeClasa)
-                                {clase[i].AdaugaElev(e);cout<<endl;ok=1;}
+                                {clase[i].AdaugaElev(e);++clase[i];cout<<endl;ok=1;}
                             if(ok==0)cout<<"Nu exista clasa mentionata!!!"<<endl;
                             cout<<endl;
                             break;

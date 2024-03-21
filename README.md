@@ -1,4 +1,7 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# Aplicatie pentru gestionarea cataloagelor unui liceu
+
+
+###Sunt memorate clasele, tinandu-se cont de elevi si diriginte. Aplicatia perimite adaugarea de noi clase, elevi si diriginti. De asemenea, se pot da note elevilor si se pot pune absente. Pentru simplificare, materiile la care pot fi notati elevii sunt matematica, romana, fizica si informatica.
 
 ## Cerințe obligatorii 
 

@@ -626,7 +626,7 @@ int main() {
                     switch (n1) {
                         case (1): {
                             int x = 0;
-                            for (int i = 0; i < nr_clase; i += 2)
+                            for (int i = 0; i < nr_clase-1; i += 2)
                                 x += clase[i] + clase[i + 1];
                             if (nr_clase % 2 == 1)x += clase[nr_clase - 1].getnrelevi();
                             cout << "Liceul X are in acest moment " << x << " elevi." << endl;

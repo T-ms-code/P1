@@ -319,16 +319,12 @@ private:
     string materie_predata;
     int ani_vechime;
 public:
-    Profesor() {
-        nume_profesor="";
-        materie_predata="";
-        ani_vechime=0;
-    }
-    Profesor(string nume_profesor,string materie_predata,int ani_vechime){
-        this->nume_profesor=std::move(nume_profesor);
-        this->materie_predata=std::move(materie_predata);
-        this->ani_vechime=ani_vechime;
-    }
+    explicit Profesor(string s1="", string s2="", int n=0):nume_profesor(std::move(s1)),materie_predata(std::move(s2)),ani_vechime(n) {}
+//    Profesor(string nume_profesor,string materie_predata,int ani_vechime){
+//        this->nume_profesor=std::move(nume_profesor);
+//        this->materie_predata=std::move(materie_predata);
+//        this->ani_vechime=ani_vechime;
+//    }
 //    Profesor(const Profesor& p){
 //        nume_profesor=p.nume_profesor;
 //        materie_predata=p.materie_predata;

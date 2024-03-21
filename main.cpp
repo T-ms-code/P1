@@ -441,7 +441,7 @@ public:
     }
     friend ostream& operator<<(ostream& out,const Clasa& c);
     friend istream& operator>>(istream& in, Clasa& c);
-    Clasa operator++(){
+    void operator++(){
         nr_elevi++;
     }
 //    bool operator==(Clasa& c){

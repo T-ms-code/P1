@@ -378,7 +378,7 @@ private:
     Elev* elevi;
     int nr_elevi;
 public:
-    Clasa(string nume_clasa,const Profesor& diriginte,Elev* elevi,int nr_elevi) : diriginte() {
+    Clasa(string nume_clasa,const Profesor& diriginte,const Elev* elevi,int nr_elevi) : diriginte() {
         this->nume_clasa=std::move(nume_clasa);
         this->diriginte=diriginte;
         if(elevi!= nullptr&&nr_elevi>0){
@@ -450,7 +450,7 @@ public:
         ///Elevii  nu sunt luati in calcul, intrucat pot exista elevi cu acelasi nume si aceleasi rezultate
         return ok;
     }
-    friend int operator+(Clasa& c1,Clasa& c2);
+    friend int operator+(const Clasa& c1,const Clasa& c2);
     void SchimbaDiriginte(){
         Profesor p;
         cin>>p;
@@ -553,8 +553,8 @@ istream& operator>>(istream& in, Clasa& c){
     in>>c.diriginte;
     return in;
 }
-int operator+( Clasa& c1,Clasa& c2){
-    return c1.nr_elevi+c2.nr_elevi;
+int operator+(const Clasa& c1,const Clasa& c2){
+    return c1.getnrelevi()+c2.getnrelevi();
 }
 
 

@@ -456,7 +456,7 @@ public:
         cin>>p;
         diriginte=p;
     }
-    void AdaugaElev(Elev& e){
+    void AdaugaElev(const Elev& e){
         int nr=nr_elevi+1;
         Elev* v2=new Elev[nr];
 //        string nume;
@@ -553,7 +553,7 @@ istream& operator>>(istream& in, Clasa& c){
     in>>c.diriginte;
     return in;
 }
-int operator+(Clasa& c1,Clasa& c2){
+int operator+( Clasa& c1,Clasa& c2){
     return c1.nr_elevi+c2.nr_elevi;
 }
 

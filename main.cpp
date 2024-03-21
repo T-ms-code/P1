@@ -378,7 +378,7 @@ private:
     Elev* elevi;
     int nr_elevi;
 public:
-    Clasa(string nume_clasa,Profesor& diriginte,Elev* elevi,int nr_elevi) : diriginte() {
+    Clasa(string nume_clasa,const Profesor& diriginte,Elev* elevi,int nr_elevi) : diriginte() {
         this->nume_clasa=std::move(nume_clasa);
         this->diriginte=diriginte;
         if(elevi!= nullptr&&nr_elevi>0){
